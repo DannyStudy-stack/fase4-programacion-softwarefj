@@ -1,5 +1,6 @@
 from src.entidad import Entidad
 from src.excepciones import DatoInvalidoError
+import re
 
 class Cliente(Entidad):
     """
@@ -10,19 +11,19 @@ class Cliente(Entidad):
         # Inicializamos lo básico que nos pide la clase padre
         super().__init__(id_entidad, nombre)
         
-        # Revisamos que el documento sea puro número
-        if not documento or not str(documento).isdigit():
-            raise DatoInvalidoError("El documento no puede estar vacío y debe contener solo números.")
+        # Revisamos que el documento sea puro número y tenga una longitud mínima razonable
+        if not documento or not str(documento).isdigit() or len(str(documento)) < 5:
+            raise DatoInvalidoError("El documento debe ser numérico y tener al menos 5 dígitos.")
         self._documento = str(documento)
         
-        # Un chequeo rapidito para ver si el correo tiene cara de correo real
-        if not correo or "@" not in correo or "." not in correo:
+        # Validación de correo con expresión regular sencilla
+        if not correo or not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", str(correo)):
             raise DatoInvalidoError("El correo electrónico ingresado no tiene un formato válido.")
         self._correo = correo
         
-        # El teléfono también tiene que ser numérico
-        if not telefono or not str(telefono).isdigit():
-            raise DatoInvalidoError("El teléfono no puede estar vacío y debe contener solo números.")
+        # El teléfono tiene que ser numérico y tener mínimo 7 dígitos
+        if not telefono or not str(telefono).isdigit() or len(str(telefono)) < 7:
+            raise DatoInvalidoError("El teléfono debe ser numérico y tener al menos 7 dígitos.")
         self._telefono = str(telefono)
         
         # Todo cliente nuevo arranca activo
@@ -46,11 +47,11 @@ class Cliente(Entidad):
         return self._activo
 
     # Acciones simples para prender o apagar clientes
-    def activar(self):
+    def activar_cliente(self):
         """Vuelve a activar al cliente."""
         self._activo = True
 
-    def desactivar(self):
+    def desactivar_cliente(self):
         """Pone al cliente como inactivo."""
         self._activo = False
 

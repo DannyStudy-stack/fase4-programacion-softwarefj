@@ -1,1 +1,10 @@
 # Archivo de log inicializado
+2026-05-12 18:31:39,092 - main - INFO - Iniciando pruebas base del sistema...
+2026-05-12 18:31:39,093 - main - INFO - Cliente creado exitosamente: Juan Perez
+2026-05-12 18:37:21,815 - main - INFO - Iniciando pruebas base del sistema...
+2026-05-12 18:37:21,816 - main - INFO - Cliente creado exitosamente: Juan Perez
+2026-05-12 18:37:21,817 - main - ERROR - Error esperado al crear cliente (Fallo por nombre vacío): El nombre no puede estar vacío y debe contener solo letras y espacios.
+2026-05-12 18:37:21,818 - main - ERROR - Error esperado al crear cliente (Fallo por documento corto): El documento debe ser numérico y tener al menos 5 dígitos.
+2026-05-12 18:37:21,818 - main - ERROR - Error esperado al crear cliente (Fallo por formato de correo inválido): El correo electrónico ingresado no tiene un formato válido.
+2026-05-12 18:37:21,818 - main - ERROR - Error esperado al crear cliente (Fallo por teléfono con letras): El teléfono debe ser numérico y tener al menos 7 dígitos.
+2026-05-12 18:37:21,818 - main - INFO - Pruebas base finalizadas.
