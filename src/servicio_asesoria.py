@@ -1,14 +1,14 @@
-from servicio import Servicio
+from src.servicio import Servicio
 
 class ServicioAsesoria(Servicio):
-    def __init__(self, nombre_servicio, precio_base, especialidad):
-        super().__init__(nombre_servicio, precio_base)
+    def __init__(self, id_entidad, nombre_servicio, precio_base, especialidad):
+        super().__init__(id_entidad, nombre_servicio, precio_base)
         self.especialidad = especialidad
 
-    def calcular_costo(self, horas, nivel_urgencia="Normal"):
-        # Polimorfismo: El costo varía según la complejidad de la asesoría [cite: 24]
-        multiplicador = 1.5 if nivel_urgencia == "Alta" else 1.0
+    def calcular_costo(self, horas, nivel="Senior"):
+        # Polimorfismo: El costo varía según el perfil del asesor
+        multiplicador = 1.8 if nivel == "Senior" else 1.0
         return (self._precio_base * horas) * multiplicador
 
     def obtener_descripcion(self):
-        return f"Asesoría en {self.especialidad} por profesionales de Software FJ."
+        return f"Asesoría Especializada en {self.especialidad} (FJ-Software)"

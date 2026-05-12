@@ -1,21 +1,24 @@
 from abc import ABC, abstractmethod
+from src.entidad import Entidad # Importación relativa para evitar fallos en el paquete
 
-# Aplicación de Abstracción: No se pueden crear instancias de esta clase directamente [cite: 11, 21]
-class Servicio(ABC):
-    def __init__(self, nombre_servicio, precio_base):
-        self._nombre_servicio = nombre_servicio  # Atributo protegido (Encapsulamiento) 
+# Abstracción: Servicio hereda de Entidad 
+class Servicio(Entidad, ABC):
+    def __init__(self, id_entidad, nombre_servicio, precio_base):
+        # Inicializa el ID en la clase padre Entidad 
+        super().__init__(id_entidad)
+        self._nombre_servicio = nombre_servicio # Encapsulamiento (protegido)
         self._precio_base = precio_base
 
     @abstractmethod
     def calcular_costo(self, **kwargs):
-        """Método abstracto: obliga a las subclases a definir su propia lógica de cobro [cite: 24]"""
+        """Método abstracto para implementar polimorfismo"""
         pass
 
     @abstractmethod
     def obtener_descripcion(self):
-        """Método abstracto para garantizar que cada servicio tenga una ficha técnica [cite: 24]"""
+        """Ficha técnica obligatoria para cada servicio"""
         pass
 
-    @property # Getter para acceder al nombre cumpliendo con la encapsulación 
+    @property
     def nombre(self):
         return self._nombre_servicio
