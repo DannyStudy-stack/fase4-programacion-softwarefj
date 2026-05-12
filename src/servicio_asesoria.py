@@ -1,5 +1,14 @@
-"""
-Aquí se creará la clase para el servicio especializado de asesorías.
-"""
+from servicio import Servicio
 
-# TODO: Implementar clase ServicioAsesoria
+class ServicioAsesoria(Servicio):
+    def __init__(self, nombre_servicio, precio_base, especialidad):
+        super().__init__(nombre_servicio, precio_base)
+        self.especialidad = especialidad
+
+    def calcular_costo(self, horas, nivel_urgencia="Normal"):
+        # Polimorfismo: El costo varía según la complejidad de la asesoría [cite: 24]
+        multiplicador = 1.5 if nivel_urgencia == "Alta" else 1.0
+        return (self._precio_base * horas) * multiplicador
+
+    def obtener_descripcion(self):
+        return f"Asesoría en {self.especialidad} por profesionales de Software FJ."
