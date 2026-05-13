@@ -3,6 +3,8 @@ from src.excepciones import ReservaInvalidaError
 
 class ServicioSala(Servicio):
     def __init__(self, id_entidad, nombre, precio_base, capacidad):
+        if capacidad <= 0:
+            raise ReservaInvalidaError("La capacidad de la sala debe ser mayor a cero.")
         super().__init__(id_entidad, nombre, precio_base)
         self.capacidad = capacidad
 

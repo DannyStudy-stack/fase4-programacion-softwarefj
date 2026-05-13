@@ -3,7 +3,10 @@ from src.entidad import Entidad
 
 class Servicio(Entidad, ABC):
     def __init__(self, id_entidad, nombre, precio_base):
-        # Entidad recibe id_entidad y nombre según el diseño del equipo
+        if not nombre or precio_base <= 0:
+            from src.excepciones import ReservaInvalidaError
+            raise ReservaInvalidaError("El nombre no puede estar vacío y el precio debe ser mayor a cero.")
+        
         super().__init__(id_entidad, nombre)
         self._precio_base = precio_base
 
@@ -13,14 +16,11 @@ class Servicio(Entidad, ABC):
 
     @abstractmethod
     def describir_servicio(self):
-        """Nombre de método solicitado para la Fase 4"""
         pass
 
     @abstractmethod
     def validar_parametros(self, **kwargs):
-        """Método para validaciones estrictas antes de operar"""
         pass
 
-    # Exigencia de la clase Entidad
     def mostrar_informacion(self):
         print(f"ID: {self.id_entidad} | Servicio: {self.nombre} | Precio Base: {self._precio_base}")

@@ -3,6 +3,8 @@ from src.excepciones import ReservaInvalidaError
 
 class ServicioAsesoria(Servicio):
     def __init__(self, id_entidad, nombre, precio_base, especialidad):
+        if not especialidad:
+            raise ReservaInvalidaError("La especialidad de la asesoría no puede estar vacía.")
         super().__init__(id_entidad, nombre, precio_base)
         self.especialidad = especialidad
 
