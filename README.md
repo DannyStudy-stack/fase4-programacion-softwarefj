@@ -1,17 +1,59 @@
 # Fase 4 - Prácticas simuladas: Software FJ
 
-## Objetivo
-Crear una aplicación en Python orientada a objetos, sin base de datos, que gestione clientes, servicios y reservas usando objetos, listas internas, validaciones y manejo avanzado de excepciones. Los archivos solo se usarán para registrar logs de eventos y errores.
+## Descripción
+Sistema Integral de Gestión desarrollado en Python. Este proyecto implementa los principios de la Programación Orientada a Objetos (POO) para simular la gestión de clientes, reservas y un catálogo de servicios polimórficos. Cabe destacar que el sistema opera enteramente en memoria durante la simulación y no utiliza ninguna base de datos externa.
 
-## Estructura del Proyecto
-El proyecto está estructurado de la siguiente manera:
-- `main.py`: Archivo de ejecución principal.
-- `src/`: Paquete que contiene la lógica de negocio (entidades, servicios, reservas, excepciones y configuración de logs).
-- `logs/`: Directorio donde se almacenan los archivos de registro.
-- `docs/`: Directorio para la documentación del proyecto.
+## Objetivo
+Crear una aplicación académica en Python que aplique herencia, encapsulamiento, polimorfismo y manejo avanzado de excepciones, cumpliendo con los lineamientos del curso para la Fase 4.
 
 ## Tecnologías
 - Python 3.x
+- Módulo estándar logging
+- Módulo estándar abc (Abstract Base Classes)
+
+## Estructura del Proyecto
+```text
+fase4-programacion-softwarefj/
+│
+├── src/                        # Código fuente (Paquete)
+│   ├── cliente.py              # Clase Cliente (Hereda de Entidad)
+│   ├── entidad.py              # Clase abstracta base
+│   ├── excepciones.py          # Excepciones personalizadas
+│   ├── logger_config.py        # Configuración del sistema de registros
+│   ├── reserva.py              # Gestión de reservas
+│   ├── servicio.py             # Clase abstracta Servicio (Hereda de Entidad)
+│   ├── servicio_asesoria.py    # Servicio derivado (Asesoría)
+│   ├── servicio_equipo.py      # Servicio derivado (Alquiler de equipos)
+│   └── servicio_sala.py        # Servicio derivado (Reserva de salas)
+│
+├── logs/                       # Historial de ejecución
+│   └── sistema.log             # Eventos y errores del sistema
+│
+├── main.py                     # Punto de entrada y simulación
+└── README.md                   # Documentación principal
+```
 
 ## Ejecución
+Para ejecutar la simulación completa del sistema, abra su terminal en el directorio raíz del proyecto y utilice el siguiente comando:
 
+```bash
+python main.py
+```
+
+## Funcionalidades Principales
+- Gestión de entidades: Validación estricta de formatos para nombres y documentos.
+- Catálogo de servicios: Cálculo de costos dinámico mediante polimorfismo según el tipo de servicio seleccionado.
+- Reservas: Flujo de creación, procesamiento y cancelación con actualización de estados.
+
+## Manejo de Errores y Logs
+El sistema implementa clases de excepciones diseñadas de manera específica para este modelo de negocio (por ejemplo, DatoInvalidoError y ReservaInvalidaError). 
+
+Adicionalmente, se configuró un sistema de trazabilidad. Todos los eventos exitosos y los errores controlados que ocurren durante la ejecución quedan registrados de manera automática y detallada en el archivo `logs/sistema.log`.
+
+## Integrantes
+- [Nombre y Apellido] - [Código o Rol]
+- [Nombre y Apellido] - [Código o Rol]
+- [Nombre y Apellido] - [Código o Rol]
+
+## Estado del Proyecto
+Finalizado y listo para la entrega académica.

@@ -1,10 +1,17 @@
-# Archivo de log inicializado
-2026-05-12 18:31:39,092 - main - INFO - Iniciando pruebas base del sistema...
-2026-05-12 18:31:39,093 - main - INFO - Cliente creado exitosamente: Juan Perez
-2026-05-12 18:37:21,815 - main - INFO - Iniciando pruebas base del sistema...
-2026-05-12 18:37:21,816 - main - INFO - Cliente creado exitosamente: Juan Perez
-2026-05-12 18:37:21,817 - main - ERROR - Error esperado al crear cliente (Fallo por nombre vacío): El nombre no puede estar vacío y debe contener solo letras y espacios.
-2026-05-12 18:37:21,818 - main - ERROR - Error esperado al crear cliente (Fallo por documento corto): El documento debe ser numérico y tener al menos 5 dígitos.
-2026-05-12 18:37:21,818 - main - ERROR - Error esperado al crear cliente (Fallo por formato de correo inválido): El correo electrónico ingresado no tiene un formato válido.
-2026-05-12 18:37:21,818 - main - ERROR - Error esperado al crear cliente (Fallo por teléfono con letras): El teléfono debe ser numérico y tener al menos 7 dígitos.
-2026-05-12 18:37:21,818 - main - INFO - Pruebas base finalizadas.
+2026-05-12 22:25:27,369 - main - INFO - Iniciando simulación completa del sistema Software FJ...
+2026-05-12 22:25:27,370 - main - INFO - Éxito en prueba 'Crear un cliente válido'
+2026-05-12 22:25:27,371 - main - ERROR - Fallo esperado en prueba 'Fallo por nombre vacío': El nombre no puede estar vacío y debe contener solo letras y espacios.
+2026-05-12 22:25:27,371 - main - ERROR - Fallo esperado en prueba 'Fallo por documento inválido (muy corto)': El documento debe ser numérico y tener al menos 5 dígitos.
+2026-05-12 22:25:27,371 - main - ERROR - Fallo esperado en prueba 'Fallo por correo inválido': El correo electrónico ingresado no tiene un formato válido.
+2026-05-12 22:25:27,372 - main - INFO - Éxito en prueba 'Crear servicio de Sala válido'
+2026-05-12 22:25:27,372 - main - ERROR - Fallo esperado en prueba 'Fallo por capacidad inválida (negativa)': La capacidad de la sala debe ser mayor a cero.
+2026-05-12 22:25:27,372 - main - INFO - Éxito en prueba 'Crear servicio de Equipo válido'
+2026-05-12 22:25:27,372 - main - ERROR - Fallo esperado en prueba 'Fallo por tipo de equipo vacío': El tipo de equipo no puede estar vacío.
+2026-05-12 22:25:27,372 - main - INFO - Éxito en prueba 'Crear servicio de Asesoría válido'
+2026-05-12 22:25:27,372 - main - ERROR - Fallo esperado en prueba 'Fallo por especialidad vacía': La especialidad de la asesoría no puede estar vacía.
+2026-05-12 22:25:27,373 - reserva - INFO - Reserva Sala de Juntas VIP confirmada manualmente.
+2026-05-12 22:25:27,373 - reserva - INFO - Reserva procesada exitosamente para Daniel Perez
+2026-05-12 22:25:27,373 - reserva - INFO - Reserva cancelada para el ID Cliente: C001
+2026-05-12 22:25:27,373 - reserva - INFO - Reserva cancelada para el ID Cliente: C001
+2026-05-12 22:25:27,373 - reserva - ERROR - Fallo en procesamiento: El alquiler de equipo requiere al menos 1 día.
+2026-05-12 22:25:27,373 - main - INFO - Simulación completa finalizada correctamente.
