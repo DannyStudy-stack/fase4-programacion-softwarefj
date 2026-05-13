@@ -1,24 +1,26 @@
 from abc import ABC, abstractmethod
-from src.entidad import Entidad # Importación relativa para evitar fallos en el paquete
+from src.entidad import Entidad
 
-# Abstracción: Servicio hereda de Entidad 
 class Servicio(Entidad, ABC):
-    def __init__(self, id_entidad, nombre_servicio, precio_base):
-        # Inicializa el ID en la clase padre Entidad 
-        super().__init__(id_entidad)
-        self._nombre_servicio = nombre_servicio # Encapsulamiento (protegido)
+    def __init__(self, id_entidad, nombre, precio_base):
+        # Entidad recibe id_entidad y nombre según el diseño del equipo
+        super().__init__(id_entidad, nombre)
         self._precio_base = precio_base
 
     @abstractmethod
     def calcular_costo(self, **kwargs):
-        """Método abstracto para implementar polimorfismo"""
         pass
 
     @abstractmethod
-    def obtener_descripcion(self):
-        """Ficha técnica obligatoria para cada servicio"""
+    def describir_servicio(self):
+        """Nombre de método solicitado para la Fase 4"""
         pass
 
-    @property
-    def nombre(self):
-        return self._nombre_servicio
+    @abstractmethod
+    def validar_parametros(self, **kwargs):
+        """Método para validaciones estrictas antes de operar"""
+        pass
+
+    # Exigencia de la clase Entidad
+    def mostrar_informacion(self):
+        print(f"ID: {self.id_entidad} | Servicio: {self.nombre} | Precio Base: {self._precio_base}")

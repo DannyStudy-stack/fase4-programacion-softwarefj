@@ -1,16 +1,25 @@
 from src.servicio import Servicio
+from src.excepciones import ReservaInvalidaError
 
 class ServicioEquipo(Servicio):
-    def __init__(self, id_entidad, nombre_servicio, precio_base, tipo_equipo):
-        super().__init__(id_entidad, nombre_servicio, precio_base)
+    def __init__(self, id_entidad, nombre, precio_base, tipo_equipo):
+        super().__init__(id_entidad, nombre, precio_base)
         self.tipo_equipo = tipo_equipo
 
-    # Sobrecarga lógica mediante parámetros opcionales
+    def validar_parametros(self, dias):
+        if dias <= 0:
+            raise ReservaInvalidaError("El alquiler de equipo requiere al menos 1 día.")
+
     def calcular_costo(self, dias, seguro=True):
+        self.validar_parametros(dias)
         costo = self._precio_base * dias
         if seguro:
-            costo += (costo * 0.12) # 12% por cobertura de daños
+            costo *= 1.10
         return costo
 
-    def obtener_descripcion(self):
-        return f"Equipo: {self._nombre_servicio} ({self.tipo_equipo})"
+    def describir_servicio(self):
+        return f"Alquiler de equipo tipo: {self.tipo_equipo}."
+
+    def mostrar_informacion(self):
+        super().mostrar_informacion()
+        print(f"Detalle: {self.describir_servicio()}")

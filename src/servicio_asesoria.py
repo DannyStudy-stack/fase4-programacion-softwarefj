@@ -1,14 +1,23 @@
 from src.servicio import Servicio
+from src.excepciones import ReservaInvalidaError
 
 class ServicioAsesoria(Servicio):
-    def __init__(self, id_entidad, nombre_servicio, precio_base, especialidad):
-        super().__init__(id_entidad, nombre_servicio, precio_base)
+    def __init__(self, id_entidad, nombre, precio_base, especialidad):
+        super().__init__(id_entidad, nombre, precio_base)
         self.especialidad = especialidad
 
-    def calcular_costo(self, horas, nivel="Senior"):
-        # Polimorfismo: El costo varía según el perfil del asesor
-        multiplicador = 1.8 if nivel == "Senior" else 1.0
+    def validar_parametros(self, horas):
+        if horas <= 0:
+            raise ReservaInvalidaError("La asesoría debe durar al menos 1 hora.")
+
+    def calcular_costo(self, horas, nivel="Estandar"):
+        self.validar_parametros(horas)
+        multiplicador = 1.5 if nivel == "Senior" else 1.0
         return (self._precio_base * horas) * multiplicador
 
-    def obtener_descripcion(self):
-        return f"Asesoría Especializada en {self.especialidad} (FJ-Software)"
+    def describir_servicio(self):
+        return f"Asesoría técnica en {self.especialidad}."
+
+    def mostrar_informacion(self):
+        super().mostrar_informacion()
+        print(f"Detalle: {self.describir_servicio()}")
